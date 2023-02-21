@@ -10,7 +10,7 @@ const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const { id } = useParams();
   const [exerciseVideos, setExerciseVideos] = useState([]);
-  // console.log(exerciseVideos);
+
 
   useEffect(() => {
     const fetchExerciseData = async () => {
@@ -27,8 +27,8 @@ const ExerciseDetail = () => {
         `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
         youtubeOptions
       );
-      setExerciseVideos(exerciseVideoData);
-      // console.log(exerciseVideos);
+      setExerciseVideos(exerciseVideoData.contents);
+      // console.log(exerciseVideos.contents);
     };
     fetchExerciseData();
   }, [id]);

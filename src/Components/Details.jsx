@@ -19,7 +19,7 @@ const Details = ({ exerciseDetails }) => {
     >
       <img src={gifUrl} alt={name} loading="lazy" className="detail-image" />
       <Stack sx={{ gap: { lg: "35p", xs: "20px" } }}>
-        <Typography>{name}</Typography>
+        <Typography variant="h2" textTransform="capitalize">{name}</Typography>
         <Typography variant="h6">
           Exercise {name} focuses on building your {target}.
         </Typography>

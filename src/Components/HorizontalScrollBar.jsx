@@ -6,6 +6,7 @@ import RigthArrowIcon from "../assets/icons/right-arrow.png";
 import LeftArrowIcon from "../assets/icons/left-arrow.png";
 
 const HorizontalScrollBar = ({ data, bodyPart, setBodyPart }) => {
+  console.log(data)
   return (
     <ScrollMenu>
       {data.map((item) => (

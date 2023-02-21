@@ -4,11 +4,13 @@ import Details from "../Components/Details";
 import SimilarExercises from "../Components/SimilarExercises";
 import ExerciseVideos from "../Components/ExerciseVideos";
 import { useParams } from "react-router-dom";
-import { exerciseOptions, fetchData } from "../utils/fetchData";
+import { exerciseOptions, fetchData, youtubeOptions } from "../utils/fetchData";
 
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const { id } = useParams();
+  const [exerciseVideos, setExerciseVideos] = useState([]);
+  // console.log(exerciseVideos);
 
   useEffect(() => {
     const fetchExerciseData = async () => {
@@ -20,15 +22,25 @@ const ExerciseDetail = () => {
         exerciseOptions
       );
       setExerciseDetail(exerciseDetailData);
-      // console.log(exerciseDetailData);
+
+      const exerciseVideoData = await fetchData(
+        `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
+        youtubeOptions
+      );
+      setExerciseVideos(exerciseVideoData);
+      // console.log(exerciseVideos);
     };
     fetchExerciseData();
   }, [id]);
 
+  // if (!exerciseDetail) return "exercise detail still fetching";
   return (
     <Box>
       <Details exerciseDetails={exerciseDetail} />
-      <ExerciseVideos />
+      <ExerciseVideos
+        exerciseVideos={exerciseVideos}
+        name={exerciseDetail.name}
+      />
       <SimilarExercises />
     </Box>
   );

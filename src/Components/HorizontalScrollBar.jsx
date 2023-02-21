@@ -2,11 +2,10 @@ import { Box } from "@mui/material";
 import React from "react";
 import BodyPart from "./BodyPart";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import RigthArrowIcon from "../assets/icons/right-arrow.png"
-import LeftArrowIcon from "../assets/icons/left-arrow.png"
+import RigthArrowIcon from "../assets/icons/right-arrow.png";
+import LeftArrowIcon from "../assets/icons/left-arrow.png";
 
 const HorizontalScrollBar = ({ data, bodyPart, setBodyPart }) => {
-  console.log(data);
   return (
     <ScrollMenu>
       {data.map((item) => (

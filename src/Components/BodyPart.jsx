@@ -3,8 +3,6 @@ import React from "react";
 import Icon from "../assets/icons/gym.png";
 
 const BodyPart = ({ item, setBodyPart, bodyPart }) => {
-  //   console.log(item);
-  //   console.log(bodyPart);
   return (
     <Stack
       type="button"
@@ -14,6 +12,7 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
       sx={{
         borderTop: bodyPart === item ? "4px solid #ff2625" : "",
         background: "white",
+        // background: "black",
         borderBottomLeftRadius: "20px",
         width: "270px",
         height: "280px",
@@ -21,8 +20,12 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         gap: "47px",
       }}
       onClick={() => {
-        // setBodyPart("jhu");
-        window.scrollTo({ top: "1800px", left: "100px", behavior: "smooth" });
+        setBodyPart(item);
+        window.scrollTo({
+          left: "100px",
+          top: "1600px",
+          behavior: "smooth",
+        });
       }}
     >
       <img src={Icon} alt="dumbell" style={{ width: "40px", height: "40px" }} />

@@ -2,7 +2,7 @@ import React from "react";
 import BodyPartImage from "../assets/icons/body-part.png";
 import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/equipment.png";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 const Details = ({ exerciseDetails }) => {
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetails;
@@ -11,6 +11,7 @@ const Details = ({ exerciseDetails }) => {
     { icon: TargetImage, name: target },
     { icon: EquipmentImage, name: equipment },
   ];
+
   return (
     <Stack
       gap="60px"
@@ -22,6 +23,27 @@ const Details = ({ exerciseDetails }) => {
         <Typography variant="h6">
           Exercise {name} focuses on building your {target}.
         </Typography>
+        {extraDetail.map((item) => (
+          <Stack key={item.name} direction="row" gap="24px" alignItems="center">
+            <Button
+              sx={{
+                background: "#fff2dd",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px",
+              }}
+            >
+              <img
+                src={item.icon}
+                alt={bodyPart}
+                style={{ width: "50px", height: "50px" }}
+              />
+            </Button>
+            <Typography variant="h5" textTransform="capitalize">
+              {item.name}
+            </Typography>
+          </Stack>
+        ))}
       </Stack>
     </Stack>
   );
